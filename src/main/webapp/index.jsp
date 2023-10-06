@@ -30,7 +30,6 @@
                 <fieldset>
                     <legend>Choose your Y:</legend>
                     <div>
-                        <label for="y">Choose your Y:</label>
                         <input type="text" name="y" id="y" placeholder="Введите значение от -3 до 5" required>
                     </div>
                 </fieldset>
@@ -68,14 +67,8 @@
             <td>
                 <input class="submit-button" type="submit" value="Проверка результата">
             </td>
-        </tr>
-    </table>
-</form>
-<form type="DELETE">
-    <table>
-        <tr>
             <td>
-                <input class="clear_table" type="submit" value="Очистить таблицу">
+                <input class="clear_table" type="button" value="Очистить таблицу" onclick="deleteDB()">
             </td>
         </tr>
     </table>

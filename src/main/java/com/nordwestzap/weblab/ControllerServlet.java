@@ -17,6 +17,7 @@ public class ControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("get req");
         request.setAttribute("Attempt-Repository", attemptRepository);
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
@@ -27,15 +28,18 @@ public class ControllerServlet extends HttpServlet {
     }
 
     @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Cookie sessionIdCookie = null;
-        for (Cookie cookie : req.getCookies()) {
-            if (cookie.getName().equals("JSESSIONID")) {
-                sessionIdCookie = cookie;
-                break;
-            }
-            attemptRepository.deleteUserAttempts(sessionIdCookie.getValue());
-            super.doDelete(req, resp);
-        }
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("del req");
+//        Cookie sessionIdCookie = null;
+//        for (Cookie cookie : req.getCookies()) {
+//            if (cookie.getName().equals("JSESSIONID")) {
+//                sessionIdCookie = cookie;
+//                break;
+//            }
+//        }
+//        attemptRepository.deleteUserAttempts(sessionIdCookie.getValue());
+        resp.setStatus(400);
+        resp.getWriter().print("sessionIdCookie");
+        return;
     }
 }

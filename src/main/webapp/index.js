@@ -1,3 +1,13 @@
+function deleteDB(){
+    alert(123);
+    let form = document.createElement('form');
+    form.method = 'DELETE';
+    form.innerHTML = '<input name="q" value="test">';
+    // перед отправкой формы, её нужно вставить в документ
+    document.body.append(form);
+    form.submit();
+}
+
 function showValue(value) {
     var form = document.querySelector("#param_r");
     form.value = value;
