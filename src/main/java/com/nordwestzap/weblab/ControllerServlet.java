@@ -24,22 +24,28 @@ public class ControllerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("post req");
         request.getRequestDispatcher("/check").forward(request, response);
     }
 
     @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("del req");
-//        Cookie sessionIdCookie = null;
-//        for (Cookie cookie : req.getCookies()) {
-//            if (cookie.getName().equals("JSESSIONID")) {
-//                sessionIdCookie = cookie;
-//                break;
-//            }
-//        }
-//        attemptRepository.deleteUserAttempts(sessionIdCookie.getValue());
-        resp.setStatus(400);
-        resp.getWriter().print("sessionIdCookie");
-        return;
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        Cookie sessionIdCookie = null;
+        for (Cookie cookie : request.getCookies()) {
+            if (cookie.getName().equals("JSESSIONID")) {
+                sessionIdCookie = cookie;
+                break;
+            }
+        }
+
+        //TODO check cookie
+        String sessionId = sessionIdCookie.getValue();
+
+        attemptRepository.deleteUserAttempts(sessionId);
+
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().write("Запрос DELETE успешно обработан.");
     }
 }

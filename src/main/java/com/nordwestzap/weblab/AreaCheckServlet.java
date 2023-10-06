@@ -26,6 +26,7 @@ public class AreaCheckServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String xStr = (String) request.getParameter("x");
         String yStr = (String) request.getParameter("y");
         String rStr = (String) request.getParameter("r");
@@ -69,7 +70,7 @@ public class AreaCheckServlet extends HttpServlet {
             response.getWriter().println("x must be integer value of [-4, -3, -2, -1, 0, 1, 2, 3, 4] ");
         }
 
-        if (!(y > -3 && y < 5)) {
+        if (!(y >= -3 && y <= 5)) {
             response.setStatus(400);
             response.getWriter().println("y must be double value of (-3; 5)");
         }
@@ -101,7 +102,9 @@ public class AreaCheckServlet extends HttpServlet {
         Attempt attempt = attemptRepository.addAttempt(new Attempt(sessionId, x, y, r, isHit, attemptTime, scriptDuration));
 
         ObjectMapper objectMapper = new ObjectMapper();
+        response.setStatus(200);
         response.getWriter().print(objectMapper.writeValueAsString(AttemptMapper.toAttemptDto(attempt)));
+
     }
 
     private boolean checkHit(int x, double y, int r) {

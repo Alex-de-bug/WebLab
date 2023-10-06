@@ -13,10 +13,13 @@ public class UrlFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String uri = request.getRequestURI();
-        if (uri.endsWith("/lab"))
-            request.getRequestDispatcher("/lab").forward(request, response);
-        //request.getServletContext().getNamedDispatcher("ControllerServlet").forward(request, response);
+        if (uri.endsWith("/lab") || uri.endsWith("/index.js")) {
+            request.getServletContext().getNamedDispatcher("ControllerServlet").forward(request, response);
+        } else if(uri.endsWith("/")){
+            response.sendRedirect(uri+"lab");
+        }
         else  {
+//            System.out.println("доступ ограничен "+request.getRequestURI());
             response.setStatus(404);
         }
     }

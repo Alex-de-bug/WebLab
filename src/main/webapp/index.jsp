@@ -8,6 +8,9 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
+<canvas id="coordinate-system"></canvas>
+
+<br>
 <form  method="post" class="user-form">
     <table>
         <tr>
@@ -21,7 +24,7 @@
                         <button type="button" class="button_R" onclick="showValue(4)" >4</button>
                         <button type="button" class="button_R" onclick="showValue(5)" >5</button>
 <%--                        <div class="result_R"></div>--%>
-                        <input type="hidden" id="param_r" name="r" value="" required>
+                        <input type="hidden" id="param_r" name="r" value="5" required>
                     </div>
 
                 </fieldset>
@@ -75,15 +78,15 @@
 </form>
 
 <p>Список попыток</p>
-<table>
-    <tr>
+<table >
+    <tr id="result">
 <%--        <th>Session ID</th>--%>
         <th>X</th>
         <th>Y</th>
         <th>R</th>
-        <th>Is Hit</th>
         <th>Attempt Time</th>
         <th>Script Duration</th>
+        <th>Is Hit</th>
     </tr>
     <%
         AttemptRepository attemptRepository = (AttemptRepository) request.getAttribute("Attempt-Repository");
@@ -93,17 +96,15 @@
                 "<td>"+ attemptRepository.getAttempts().get(i).getX() +"</td>"+
                 "<td>"+ attemptRepository.getAttempts().get(i).getY() +"</td>"+
                 "<td>"+ attemptRepository.getAttempts().get(i).getR() +"</td>"+
-                "<td>"+attemptRepository.getAttempts().get(i).isHit()+"</td>"+
                 "<td>"+attemptRepository.getAttempts().get(i).getAttemptTime()+"</td>"+
                 "<td>"+attemptRepository.getAttempts().get(i).getScriptDuration()+"</td>"+
+                    "<td>"+attemptRepository.getAttempts().get(i).isHit()+"</td>"+
                 "</tr>");
         }
     %>
-
-
 </table>
 
 </body>
 <script><%@ include file="index.js"%></script>
-<script src="index.js"></script>
+<script><%@ include file="decart.js"%></script>
 </html>
