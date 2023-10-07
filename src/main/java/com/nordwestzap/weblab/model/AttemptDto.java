@@ -2,14 +2,14 @@ package com.nordwestzap.weblab.model;
 
 public class AttemptDto {
 
-    private final int x;
+    private final double x;
     private final double y;
     private final int r;
     private final boolean isHit;
     private final String attemptTime;
     private final long scriptDuration;
 
-    public AttemptDto(int x, double y, int r, boolean isHit, String attemptTime, long scriptDuration) {
+    public AttemptDto(double x, double y, int r, boolean isHit, String attemptTime, long scriptDuration) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -18,7 +18,7 @@ public class AttemptDto {
         this.scriptDuration = scriptDuration;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 

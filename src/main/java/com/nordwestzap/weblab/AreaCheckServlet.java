@@ -37,12 +37,12 @@ public class AreaCheckServlet extends HttpServlet {
             return;
         }
 
-        int x = 0;
+        double x = 0;
         double y = 0;
         int r = 0;
 
         try {
-            x = Integer.parseInt(xStr);
+            x = Double.parseDouble(xStr);
         } catch (NumberFormatException e) {
             response.setStatus(400);
             response.getWriter().println("x must be integer value");
@@ -65,17 +65,17 @@ public class AreaCheckServlet extends HttpServlet {
         if (response.getStatus() == 400)
             return;
 
-        if (!(List.of(-4, -3, -2, -1, 0, 1, 2, 3, 4).contains(x))) {
+        if (!(x>=-7 && x<=7)) {
             response.setStatus(400);
             response.getWriter().println("x must be integer value of [-4, -3, -2, -1, 0, 1, 2, 3, 4] ");
         }
 
-        if (!(y >= -3 && y <= 5)) {
+        if (!(y >= -7 && y <= 7)) {
             response.setStatus(400);
             response.getWriter().println("y must be double value of (-3; 5)");
         }
 
-        if (!(List.of(1, 2, 3, 4, 5).contains(r))) {
+        if (!(List.of(0, 1, 2, 3, 4, 5).contains(r))) {
             response.setStatus(400);
             response.getWriter().println("r must be integer value of [1, 2, 3, 4, 5]");
         }
@@ -90,8 +90,6 @@ public class AreaCheckServlet extends HttpServlet {
                 break;
             }
         }
-
-        //TODO check cookie
         String sessionId = sessionIdCookie.getValue();
         String attemptTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("u-M-d k-m-s"));
         Instant start = Instant.now();
@@ -107,7 +105,7 @@ public class AreaCheckServlet extends HttpServlet {
 
     }
 
-    private boolean checkHit(int x, double y, int r) {
+    private boolean checkHit(double x, double y, int r) {
         if ((x >= 0 && x <= r) && (y >= 0 && y <= r))
             return Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(r, 2);
         else if ((x <= 0 && x >= -r) && (y >= 0 && y <= (double) r / 2))

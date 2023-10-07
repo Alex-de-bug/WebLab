@@ -13,6 +13,7 @@ function deleteDB(){
                     resultTable.nextElementSibling.remove();
                 }
                 console.log("Запрос DELETE успешно выполнен.");
+                drawG(0);
             } else {
                 console.error("Произошла ошибка при выполнении запроса DELETE.");
             }
@@ -25,6 +26,7 @@ function deleteDB(){
 function showValue(value) {
     var form = document.querySelector("#param_r");
     form.value = value;
+    drawG(Number.parseInt(value));
 }
 function showValueX(value) {
     var form = document.querySelector("#param_x");
@@ -70,8 +72,12 @@ form.addEventListener('submit', (evt) => {
         alert('Enter number from -3 to 5');
         return;
     }
+    drawPointe(x*40+250, (-y*40+250), x, y)
+    sendDataPoint(x, y, r);
+});
 
 
+function sendDataPoint(x, y, r){
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "lab", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -85,17 +91,17 @@ form.addEventListener('submit', (evt) => {
             var hit = jsonResponse.hit.toString();
             resultContainer.insertAdjacentHTML("afterend",
                 "<tr>"+
-                        "<td>"+jsonResponse.x+"</td>"+
-                        "<td>"+jsonResponse.y+"</td>"+
-                        "<td>"+jsonResponse.r+"</td>"+
-                        "<td>"+attemptTime +"</td>"+
-                        "<td>"+scriptDuration +"</td>"+
-                        "<td>"+hit +"</td>"+
-                    "</tr>"
+                "<td>"+jsonResponse.x+"</td>"+
+                "<td>"+jsonResponse.y+"</td>"+
+                "<td>"+jsonResponse.r+"</td>"+
+                "<td>"+attemptTime +"</td>"+
+                "<td>"+scriptDuration +"</td>"+
+                "<td>"+hit +"</td>"+
+                "</tr>"
             );
         }
     };
 
     var data = "x=" + encodeURIComponent(x) + "&y=" + encodeURIComponent(y) + "&r=" + encodeURIComponent(r);
     xhr.send(data);
-});
+}

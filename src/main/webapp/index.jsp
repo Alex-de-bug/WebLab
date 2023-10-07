@@ -7,9 +7,8 @@
     <style><%@include file="style.css"%></style>
     <title>JSP - Hello World</title>
 </head>
-<body>
+<body onload="drawG(0)">
 <canvas id="coordinate-system"></canvas>
-
 <br>
 <form  method="post" class="user-form">
     <table>
@@ -24,7 +23,7 @@
                         <button type="button" class="button_R" onclick="showValue(4)" >4</button>
                         <button type="button" class="button_R" onclick="showValue(5)" >5</button>
 <%--                        <div class="result_R"></div>--%>
-                        <input type="hidden" id="param_r" name="r" value="5" required>
+                        <input type="hidden" id="param_r" name="r" value="" required>
                     </div>
 
                 </fieldset>

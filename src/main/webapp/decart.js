@@ -1,6 +1,7 @@
-window.onload = function () {
-    drawG();
-}
+// window.onload = function () {
+//     drawG(0);
+// }
+
 const canvas = document.getElementById("coordinate-system");
 const ctx = canvas.getContext("2d");
 
@@ -8,25 +9,37 @@ canvas.addEventListener('click', function (event) {
     var mouseX = (event.clientX - canvas.getBoundingClientRect().left-250)/40;
     var mouseY = -(event.clientY - canvas.getBoundingClientRect().top-250)/40;
 
+    mouseX = mouseX.toFixed(2);
+    mouseY = mouseY.toFixed(2);
+
 
     var mouseXe = event.clientX - canvas.getBoundingClientRect().left;
     var mouseYe = event.clientY - canvas.getBoundingClientRect().top;
 
-    // Добавляем новую точку в массив
-    points.push({ x: mouseXe, y: mouseYe });
-
-    // Рисуем новую точку
     drawPointe(mouseXe, mouseYe, mouseX, mouseY);
 
-    alert(mouseX+" "+mouseY);
+    x = Number.parseFloat(mouseX);
+    y = Number.parseFloat(mouseY);
+    var form = document.querySelector("#param_r");
+    r = Number.parseInt(form.value );
+
+    if(isNaN(r)){
+        sendDataPoint(x, y, 0);
+    }else{
+        sendDataPoint(x, y, r);
+    }
+
+
 });
 
-function drawG(){
+function drawG(r){
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     canvas.width = 500;
     canvas.height = 500;
 
+    const radiusSpec = 200*r/5;
     const radius = 200;
 
     const centerX = canvas.width / 2;
@@ -79,15 +92,15 @@ function drawG(){
 
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
-    ctx.arc(centerX, centerY, radius, 3/2*Math.PI, 4/2*Math.PI); // Изменение углов
+    ctx.arc(centerX, centerY, radiusSpec, 3/2*Math.PI, 4/2*Math.PI); // Изменение углов
     ctx.fillStyle = "#7300ff";
     ctx.fill();
     ctx.stroke();
 
     // triangle
     ctx.beginPath();
-    ctx.moveTo(centerX + radius, centerY);
-    ctx.lineTo(centerX , centerY  +radius);
+    ctx.moveTo(centerX + radiusSpec, centerY);
+    ctx.lineTo(centerX , centerY  +radiusSpec);
     ctx.lineTo(centerX, centerY);
     ctx.fillStyle = "#fffb00";
     ctx.fill();
@@ -95,9 +108,9 @@ function drawG(){
 
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
-    ctx.lineTo(centerX, centerY - radius/2);
-    ctx.lineTo(centerX - radius, centerY - radius/2);
-    ctx.lineTo(centerX - radius, centerY);
+    ctx.lineTo(centerX, centerY - radiusSpec/2);
+    ctx.lineTo(centerX - radiusSpec, centerY - radiusSpec/2);
+    ctx.lineTo(centerX - radiusSpec, centerY);
     ctx.closePath();
     ctx.fillStyle = "#3d9070";
     ctx.fill();
@@ -177,21 +190,39 @@ function drawPoint(x,y,r) {
 
 
 var pointRadius = 5;
-var pointColor = '#ff0000';
-
-
-var points = [];
-
-
 function drawPointe(x, y, xt, yt) {
+    xt = Number.parseFloat(xt);
+    yt = Number.parseFloat(yt);
+    var form = document.querySelector("#param_r");
+    r = Number.parseInt(form.value );
+    kode = validate(xt, yt, r);
+    color = '#ff0000';
+    if(kode){
+        color = '#11ff00';
+    }
 
     ctx.beginPath();
     ctx.arc(x, y, pointRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = pointColor;
+    ctx.fillStyle = color;
     ctx.fill();
 
 
     ctx.font = '12px Arial';
     ctx.fillStyle = 'black';
     ctx.fillText('('+xt+'; '+yt+')', x + 10, y);
+
+
+}
+
+function validate(x, y, r){
+    if ((x >= 0 && x <= r) && (y >= 0 && y <= r))
+        return Math.pow(x, 2) + Math.pow(y, 2) <= Math.pow(r, 2);
+    else if ((x <= 0 && x >= -r) && (y >= 0 && y <=  r / 2))
+    return y <= r / 2;
+else if (x < 0 && y < 0)
+        return false;
+    else if ((x >= 0 && x <= r) && (y <= 0 && y >= -r))
+        return y >= x - r;
+    else
+        return false;
 }

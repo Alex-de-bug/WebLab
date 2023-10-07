@@ -3,14 +3,14 @@ package com.nordwestzap.weblab.model;
 public class Attempt {
 
     private final String sessionId;
-    private final int x;
+    private final double x;
     private final double y;
     private final int r;
     private final boolean isHit;
     private final String attemptTime;
     private final long scriptDuration;
 
-    public Attempt(String sessionId, int x, double y, int r, boolean isHit, String attemptTime, long scriptDuration) {
+    public Attempt(String sessionId, double x, double y, int r, boolean isHit, String attemptTime, long scriptDuration) {
         this.sessionId = sessionId;
         this.x = x;
         this.y = y;
@@ -37,7 +37,7 @@ public class Attempt {
         return sessionId;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
