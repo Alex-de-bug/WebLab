@@ -8,7 +8,13 @@
     <title>JSP - Hello World</title>
 </head>
 <body onload="drawG(0)">
-Дениченко Александр Олегович Р3212 В-2243
+<div class="card-user-den">
+    <div class="header-with-image">
+        <p>
+            Дениченко Александр Олегович Р3212 В-2243
+        </p>
+    </div>
+</div>
 <br>
 <canvas id="coordinate-system"></canvas>
 
@@ -35,7 +41,7 @@
                     <fieldset>
                         <legend>Choose your Y:</legend>
                         <div>
-                            <input type="text" name="y" id="y" placeholder="Введите значение от -3 до 5" required>
+                            <input type="text" name="y" id="y" placeholder="от -3 до 5" required>
                         </div>
                     </fieldset>
                 </td>
@@ -79,9 +85,12 @@
         </table>
     </form>
 </div>
+<br>
+<h1 class="cool-list">List
+    <h1 class="cool-try">try</h1>
+</h1>
 
-<p>Список попыток</p>
-<table >
+<table class="table">
     <tr id="result">
 <%--        <th>Session ID</th>--%>
         <th>X</th>
