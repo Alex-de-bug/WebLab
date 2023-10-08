@@ -8,73 +8,77 @@
     <title>JSP - Hello World</title>
 </head>
 <body onload="drawG(0)">
-<canvas id="coordinate-system"></canvas>
+Дениченко Александр Олегович Р3212 В-2243
 <br>
-<form  method="post" class="user-form">
-    <table>
-        <tr>
-            <td>
-                <fieldset>
-                    <legend>Choose your R:</legend>
-                    <div>
-                        <button type="button" class="button_R" onclick="showValue(1)" >1</button>
-                        <button type="button" class="button_R" onclick="showValue(2)" >2</button>
-                        <button type="button" class="button_R" onclick="showValue(3)" >3</button>
-                        <button type="button" class="button_R" onclick="showValue(4)" >4</button>
-                        <button type="button" class="button_R" onclick="showValue(5)" >5</button>
-<%--                        <div class="result_R"></div>--%>
-                        <input type="hidden" id="param_r" name="r" value="" required>
-                    </div>
+<canvas id="coordinate-system"></canvas>
 
-                </fieldset>
-            </td>
-            <td>
-                <fieldset>
-                    <legend>Choose your Y:</legend>
-                    <div>
-                        <input type="text" name="y" id="y" placeholder="Введите значение от -3 до 5" required>
-                    </div>
-                </fieldset>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <fieldset>
-                    <legend>Choose your X:</legend>
-                    <div>
-                        <input type="checkbox" id="btn-4" class="x" onclick="showValueX(-4)" />
-                        <label for="btn-4">-4</label>
-                        <input type="checkbox" id="btn-3" class="x" onclick="showValueX(-3)" />
-                        <label for="btn-3">-3</label>
-                        <input type="checkbox" id="btn-2" class="x" onclick="showValueX(-2)" />
-                        <label for="btn-2">-2</label>
-                        <input type="checkbox" id="btn-1" class="x" onclick="showValueX(-1)" />
-                        <label for="btn-1">-1</label>
-                        <input type="checkbox" id="btn0" class="x"  onclick="showValueX(0)" />
-                        <label for="btn0">0</label>
-                        <input type="checkbox" id="btn1" class="x" onclick="showValueX(1)" />
-                        <label for="btn1">1</label>
-                        <input type="checkbox" id="btn2" class="x" onclick="showValueX(2)" />
-                        <label for="btn2">2</label>
-                        <input type="checkbox" id="btn3" class="x"  onclick="showValueX(3)" />
-                        <label for="btn3">3</label>
-                        <input type="checkbox" id="btn4" class="x"  onclick="showValueX(4)" />
-                        <label for="btn4">4</label>
-                        <input type="hidden" id="param_x" name="x" value="" required>
-                    </div>
-                </fieldset>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input class="submit-button" type="submit" value="Проверка результата">
-            </td>
-            <td>
-                <input class="clear_table" type="button" value="Очистить таблицу" onclick="deleteDB()">
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="card">
+    <form  method="post" class="user-form">
+        <table class="card">
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>Choose your R:</legend>
+                        <div>
+                            <button type="button" class="button_R" onclick="showValue(1)" >1</button>
+                            <button type="button" class="button_R" onclick="showValue(2)" >2</button>
+                            <button type="button" class="button_R" onclick="showValue(3)" >3</button>
+                            <button type="button" class="button_R" onclick="showValue(4)" >4</button>
+                            <button type="button" class="button_R" onclick="showValue(5)" >5</button>
+    <%--                        <div class="result_R"></div>--%>
+                            <input type="hidden" id="param_r" name="r" value="" required>
+                        </div>
+
+                    </fieldset>
+                </td>
+                <td>
+                    <fieldset>
+                        <legend>Choose your Y:</legend>
+                        <div>
+                            <input type="text" name="y" id="y" placeholder="Введите значение от -3 до 5" required>
+                        </div>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <fieldset>
+                        <legend>Choose your X:</legend>
+                        <div>
+                            <input type="checkbox" id="btn-4" class="x" onclick="showValueX(-4)" />
+                            <label for="btn-4">-4</label>
+                            <input type="checkbox" id="btn-3" class="x" onclick="showValueX(-3)" />
+                            <label for="btn-3">-3</label>
+                            <input type="checkbox" id="btn-2" class="x" onclick="showValueX(-2)" />
+                            <label for="btn-2">-2</label>
+                            <input type="checkbox" id="btn-1" class="x" onclick="showValueX(-1)" />
+                            <label for="btn-1">-1</label>
+                            <input type="checkbox" id="btn0" class="x"  onclick="showValueX(0)" />
+                            <label for="btn0">0</label>
+                            <input type="checkbox" id="btn1" class="x" onclick="showValueX(1)" />
+                            <label for="btn1">1</label>
+                            <input type="checkbox" id="btn2" class="x" onclick="showValueX(2)" />
+                            <label for="btn2">2</label>
+                            <input type="checkbox" id="btn3" class="x"  onclick="showValueX(3)" />
+                            <label for="btn3">3</label>
+                            <input type="checkbox" id="btn4" class="x"  onclick="showValueX(4)" />
+                            <label for="btn4">4</label>
+                            <input type="hidden" id="param_x" name="x" value="" required>
+                        </div>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="submit-button" type="submit" value="Проверка результата">
+                </td>
+                <td>
+                    <input class="clear_table" type="button" value="Очистить таблицу" onclick="deleteDB()">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 
 <p>Список попыток</p>
 <table >

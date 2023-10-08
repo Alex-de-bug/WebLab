@@ -49,51 +49,27 @@ function drawG(r){
 
     const pointRadius = 3;
 
-    ctx.strokeStyle = "#000000";
+    ctx.strokeStyle = "#c6c6c6c6";
     ctx.lineWidth = 2;
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "#ffffff";
 
-    // x
-    ctx.beginPath();
-    ctx.moveTo(0, centerY);
-    ctx.lineTo(canvas.width, centerY);
-    ctx.stroke();
 
-    // x arrow
-    ctx.beginPath();
-    ctx.moveTo(canvas.width - 8, centerY - 5);
-    ctx.lineTo(canvas.width, centerY);
-    ctx.lineTo(canvas.width - 8, centerY + 5);
-    ctx.fill();
-
+    ctx.fillStyle = "#ff9000";
     // sign x axis
     ctx.fillText("X", canvas.width - 10, centerY + 20);
-
-
-    // y axis
-    ctx.beginPath();
-    ctx.moveTo(centerX, 0);
-    ctx.lineTo(centerX, canvas.height);
-    ctx.stroke();
-
-    // y arrow
-    ctx.beginPath();
-    ctx.moveTo(centerX - 5, 10);
-    ctx.lineTo(centerX, 0);
-    ctx.lineTo(centerX + 5, 10);
-    ctx.fill();
-
+    ctx.fillStyle = "#ff9000";
     // sign y axis
     ctx.fillText("Y", centerX - 20, 20);
 
+
     ctx.fillStyle = 'blue';
-    ctx.strokeStyle = '#000000';
+    ctx.strokeStyle = '#ff9000';
     ctx.lineWidth = 1;
 
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.arc(centerX, centerY, radiusSpec, 3/2*Math.PI, 4/2*Math.PI); // Изменение углов
-    ctx.fillStyle = "#7300ff";
+    ctx.fillStyle = "#15151515";
     ctx.fill();
     ctx.stroke();
 
@@ -102,7 +78,7 @@ function drawG(r){
     ctx.moveTo(centerX + radiusSpec, centerY);
     ctx.lineTo(centerX , centerY  +radiusSpec);
     ctx.lineTo(centerX, centerY);
-    ctx.fillStyle = "#fffb00";
+    ctx.fillStyle = "#15151515";
     ctx.fill();
     ctx.stroke();
 
@@ -112,9 +88,59 @@ function drawG(r){
     ctx.lineTo(centerX - radiusSpec, centerY - radiusSpec/2);
     ctx.lineTo(centerX - radiusSpec, centerY);
     ctx.closePath();
-    ctx.fillStyle = "#3d9070";
+    ctx.fillStyle = "#15151515";
     ctx.fill();
     ctx.stroke();
+
+
+    ctx.strokeStyle = "#c6c6c6c6";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "#ff9000";
+
+
+    // x
+    ctx.beginPath();
+    ctx.moveTo(0, centerY);
+    ctx.lineTo(canvas.width, centerY);
+    ctx.stroke();
+
+    // x arrow
+    ctx.beginPath();
+    ctx.moveTo(canvas.width - 18, centerY - 14);
+    ctx.lineTo(canvas.width, centerY);
+    ctx.lineTo(canvas.width - 18, centerY + 14);
+    ctx.fillStyle = '#c6c6c6c6';
+    ctx.fill();
+
+    // x arrow
+    ctx.beginPath();
+    ctx.moveTo(canvas.width - 15, centerY - 10);
+    ctx.lineTo(canvas.width, centerY);
+    ctx.lineTo(canvas.width - 15, centerY + 10);
+    ctx.fillStyle = '#ff9000';
+    ctx.fill();
+
+    // y axis
+    ctx.beginPath();
+    ctx.moveTo(centerX, 0);
+    ctx.lineTo(centerX, canvas.height);
+    ctx.stroke();
+
+    // y arrow
+    ctx.beginPath();
+    ctx.moveTo(centerX - 14, 18);
+    ctx.lineTo(centerX, 0);
+    ctx.lineTo(centerX + 14, 18);
+    ctx.fillStyle = '#c6c6c6c6';
+    ctx.fill();
+
+    // y arrow
+    ctx.beginPath();
+    ctx.moveTo(centerX - 10, 15);
+    ctx.lineTo(centerX, 0);
+    ctx.lineTo(centerX + 10, 15);
+    ctx.fillStyle = '#ff9000';
+    ctx.fill();
 
     // ox
     ctx.beginPath();
@@ -129,8 +155,11 @@ function drawG(r){
     ctx.arc(centerX - 3/5*radius, centerY, pointRadius, 0, 2 * Math.PI);
     ctx.arc(centerX - 2/5*radius, centerY, pointRadius, 0, 2 * Math.PI);
     ctx.arc(centerX - 1/5*radius, centerY, pointRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = '#ff9000';
     ctx.fill();
+
+    ctx.font = '12px Arial';
+    ctx.fillStyle = '#c6c6c6c6';
 
     ctx.fillText('5', centerX + radius + pointRadius, centerY + 20);
     ctx.fillText('4', centerX + (4/5) * radius + pointRadius, centerY + 20);
@@ -158,12 +187,11 @@ function drawG(r){
     ctx.arc(centerX, centerY - (2/5) * radius, pointRadius, 0, 2 * Math.PI);
     ctx.arc(centerX, centerY - (1/5) * radius, pointRadius, 0, 2 * Math.PI);
 
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = '#ff9000';
     ctx.fill();
 
-    ctx.font = '12px Arial'; // Устанавливаем шрифт и размер
-    ctx.fillStyle = 'black'; // Устанавливаем цвет текста
-
+    ctx.font = '12px Arial';
+    ctx.fillStyle = '#c6c6c6c6';
     ctx.fillText('-5', centerX + 20, centerY + radius);
     ctx.fillText('-4', centerX + 20, centerY + (4/5) * radius);
     ctx.fillText('-3', centerX + 20, centerY + (3/5) * radius);
@@ -178,37 +206,44 @@ function drawG(r){
 
 }
 
-function drawPoint(x,y,r) {
-    const scale = 400 / 2;
-    x = scale / r * x + scale + 50;
-    y = 300 - (scale / r * y + scale - 150);
-    ctx.beginPath();
-    ctx.arc(x, y, 3, 0, 2 * Math.PI);
-    ctx.fillStyle = '#030000';
-    ctx.fill();
-}
+// function drawPoint(x,y,r) {
+//     const scale = 400 / 2;
+//     x = scale / r * x + scale + 50;
+//     y = 300 - (scale / r * y + scale - 150);
+//     ctx.beginPath();
+//     ctx.arc(x, y, 3, 0, 2 * Math.PI);
+//     ctx.fillStyle = '#030000';
+//     ctx.fill();
+// }
 
 
 var pointRadius = 5;
 function drawPointe(x, y, xt, yt) {
     xt = Number.parseFloat(xt);
     yt = Number.parseFloat(yt);
+
     var form = document.querySelector("#param_r");
     r = Number.parseInt(form.value );
     kode = validate(xt, yt, r);
-    color = '#ff0000';
+    color = '#000000';
+    colore = '#ff9000';
     if(kode){
-        color = '#11ff00';
+        colore = '#c6c6c6c6';
+        color = '#ff9000';
     }
+
+    ctx.beginPath();
+    ctx.arc(x, y, pointRadius+1, 0, 2 * Math.PI);
+    ctx.fillStyle = colore;
+    ctx.fill();
 
     ctx.beginPath();
     ctx.arc(x, y, pointRadius, 0, 2 * Math.PI);
     ctx.fillStyle = color;
     ctx.fill();
 
-
     ctx.font = '12px Arial';
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = '#ffffff';
     ctx.fillText('('+xt+'; '+yt+')', x + 10, y);
 
 
