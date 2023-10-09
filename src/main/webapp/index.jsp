@@ -41,7 +41,7 @@
                     <fieldset>
                         <legend>Choose your Y:</legend>
                         <div>
-                            <input type="text" name="y" id="y" placeholder="от -3 до 5" required>
+                            <input type="text" name="y" id="y"  required>
                         </div>
                     </fieldset>
                 </td>

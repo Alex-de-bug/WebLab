@@ -17,14 +17,14 @@ public class ControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("get req");
+//        System.out.println("get req");
         request.setAttribute("Attempt-Repository", attemptRepository);
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("post req");
+//        System.out.println("post req");
         request.getRequestDispatcher("/check").forward(request, response);
     }
 
@@ -46,6 +46,6 @@ public class ControllerServlet extends HttpServlet {
         attemptRepository.deleteUserAttempts(sessionId);
 
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().write("Запрос DELETE успешно обработан.");
+//        response.getWriter().write("Запрос DELETE успешно обработан.");
     }
 }
